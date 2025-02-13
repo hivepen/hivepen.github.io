@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hive Pen | A tool for writers </title>
+  <meta name="description" content="A tool for writers, specially Hive bloggers.">
+  <link rel="stylesheet" href="../assets/styles/main.css" />
+  <link rel="icon" href="../public/img/logo/hivepen-logo-nobg.svg" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    .input-wrapper {}
+
+    .input-wrapper>input:before {
+      content: '@';
+      font-weight: 900;
+    }
+  </style>
+</head>
+
+<body x-data="{
+          username: 'carlosepc',
+          init() {
+              const urlParams = new URLSearchParams(window.location.search);
+              this.username = urlParams.get('u') || 'carlosepc';
+              
+          }
+      }">
+  <div
+    style="position: absolute;bottom:-100px;left:-150px;border-radius: 99999px;filter: blur(100px); background:var(--primary);padding:8rem;opacity:50%">
+  </div>
+  <div
+    style="position: absolute;top:25%;right:10%;border-radius: 99999px;filter: blur(100px); background:var(--secondary);padding:8rem;opacity:25%;pointer-events: none; z-index: -10; width: 50%;transform: rotate(45deg);">
+  </div>
+  <div style="display:flex;align-items: center;padding:1rem;gap:1rem">
+    <img alt="Hive Pen isologo" src="../public/img/logo/hivepen-logo-nobg.svg" width="52" height="52" />
+    <h1 style="color:var(--primary)"><span>Hive</span><span>pen</span></h1>
+  </div>
+  <main>
+
+    <div style="display:flex;gap:1rem;flex-direction:column;align-items: center;">
+
+
+
+      <img class="rounded-full avatar"
+        :src="`https://images.hive.blog/u/${username != '' ? username : 'hivepen' }/avatar`"
+        :alt="`Avatar for ${username}`">
+      <div class="input-wrapper rounded-full">
+        <b style="font-weight: 900;color:var(--primary)">@</b>
+        <input class="username-input" placeholder="your username" x-model="username" />
+      </div>
+      <div style="display: flex;gap:1rem;justify-content: center;align-items: center;margin-block-start: 1rem;">
+        <a target="_blank" :href="`https://ecency.com/@${username}`">Ecency</a>
+
+        <a target="_blank" :href="`https://inleo.io/profile/${username}`">InLeo</a>
+        <a target="_blank" :href="`https://hive.blog/@${username}`">Hive blog</a>
+        <a target="_blank" :href="`https://peakd.com/@${username}`">PeakD</a>
+
+      </div>
+      <br /> <a :href="`https://hivepen.surge.sh/p/?u=${username}`">This profile</a>
+    </div>
+
+  </main>
+  <footer>
+    <a target="_blank" href="https://carlosepc.github.io">carlosepc's</a>
+    <a target="_blank" href="https://ecency.com/@hiveto">Hivepen</a><sup>&copy;</sup> All rights reserved
+  </footer>
+</body>
+
+</html>
