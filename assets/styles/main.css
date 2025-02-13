@@ -1,0 +1,95 @@
+*,
+:root {
+  box-sizing: border-box;
+  --primary: #fd9a0e;
+  --secondary: #ff4c4c;
+}
+body {
+  font-family: Poppins, Roboto, Helvetica, sans-serif;
+  color: #1004;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  background-color: hsl(10, 20%, 99%);
+  text-align: center;
+  gap: 3rem;
+  margin: 0;
+  overflow: hidden;
+}
+header {
+  padding-top: 3rem;
+  width: 100%;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  background: #00000006;
+  padding: 2rem;
+}
+
+a {
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+header img {
+  width: 20rem;
+}
+header h1 {
+  color: var(--primary);
+}
+header h1 > span:nth-child(2) {
+  color: var(--primary);
+}
+.rounded-full {
+  border-radius: 99999px;
+}
+.avatar {
+  width: 8rem;
+  aspect-ratio: 1;
+}
+p {
+  font-size: 16pt;
+  text-align: center;
+}
+.username-input:focus {
+  outline: none;
+}
+.input-wrapper {
+  background: #00000008;
+  padding: 0.3em 0.5em;
+  display: flex;
+  margin-inline: auto;
+  align-items: center;
+  gap: 0.2em;
+  width: 180px;
+}
+.username-input {
+  border: none;
+  width: fit-content;
+  font-size: 15pt;
+  font-weight: 700;
+  background: none;
+  resize: horizontal;
+  color: #333;
+  overflow-x: hidden;
+}
+
+.input-wrapper:focus {
+  outline: 2px solid var(--primary);
+}
+main {
+  padding-inline: 1rem;
+}
