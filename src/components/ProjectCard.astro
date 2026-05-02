@@ -2,51 +2,156 @@
 import { css } from "../../styled-system/css";
 
 interface Props {
-  status: string;
+  id: string;
+  tag: string;
   title: string;
+  status: string;
   description: string;
+  pills: Array<{ text: string; dark: boolean }>;
+  accentColor: string;
 }
 
-const { status, title, description } = Astro.props;
+const { id, tag, title, status, description, pills, accentColor } = Astro.props;
+
+const getAnimationDelay = () => {
+  switch (id) {
+    case 'genioo': return '0.4s';
+    case 'gloti': return '0.55s';
+    case 'studio': return '0.7s';
+    default: return '0.4s';
+  }
+};
 ---
 
-<article
+<div
   class={css({
-    p: "5",
-    borderRadius: "card",
-    bg: "rgba(255, 255, 255, 0.78)",
-    borderWidth: "1px",
-    borderStyle: "solid",
-    borderColor: "line"
+    border: "1.5px solid #0d0d0d",
+    marginBottom: "-1.5px",
+    overflow: "hidden",
+    position: "relative",
+    transition: "transform 0.25s ease, box-shadow 0.25s ease",
+    background: "#fff",
+    opacity: 0,
+    animation: "fadeUp 0.7s ease forwards",
+    animationDelay: getAnimationDelay(),
+    "&:hover": {
+      transform: "translateY(-3px)",
+      boxShadow: "0 12px 40px rgba(0,0,0,0.1)",
+      zIndex: 2
+    },
+    "&::before": {
+      content: '""',
+      display: "block",
+      height: "4px",
+      width: "100%",
+      background: accentColor
+    }
   })}
 >
-  <span
+  <div
     class={css({
-      display: "inline-flex",
-      mb: "3.5",
-      px: "2.5",
-      py: "1",
-      borderRadius: "full",
-      bg: "rgba(253, 154, 14, 0.14)",
-      color: "#a35900",
-      fontSize: "2xs",
-      fontWeight: "700",
-      textTransform: "uppercase",
-      letterSpacing: "0.08em"
+      padding: "28px 28px 24px"
     })}
   >
-    {status}
-  </span>
-  <h4
-    class={css({
-      m: 0,
-      mb: "3",
-      fontSize: "xl",
-      lineHeight: "1.2",
-      color: "ink"
-    })}
-  >
-    {title}
-  </h4>
-  <p class={css({ m: 0, color: "muted" })}>{description}</p>
-</article>
+    <div
+      class={css({
+        display: "flex",
+        alignItems: "flex-start",
+        justifyContent: "space-between",
+        gap: "16px",
+        marginBottom: "18px"
+      })}
+    >
+      <div>
+        <div
+          class={css({
+            display: "inline-block",
+            background: accentColor,
+            color: "#fff",
+            fontSize: "9px",
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            padding: "3px 9px",
+            marginBottom: "10px"
+          })}
+        >
+          {tag}
+        </div>
+        <div
+          class={css({
+            fontFamily: "'DM Serif Display', serif",
+            fontSize: "38px",
+            color: "#0d0d0d",
+            lineHeight: "1.0",
+            letterSpacing: "-0.02em",
+            whiteSpace: "pre-line"
+          })}
+        >
+          {title.split('\n').map((line, index) => (
+            <>
+              {line.includes('Studio') ? (
+                <>{line.slice(0, -6)}<em
+                  class={css({
+                    fontStyle: "italic",
+                    color: "#555"
+                  })}
+                >Studio</em></>
+              ) : line}
+              {index < title.split('\n').length - 1 && <br />}
+            </>
+          ))}
+        </div>
+      </div>
+      <div
+        class={css({
+          fontSize: "9px",
+          letterSpacing: "0.14em",
+          textTransform: "uppercase",
+          color: "#999",
+          border: "1px solid #ebebeb",
+          padding: "4px 9px",
+          whiteSpace: "nowrap",
+          flexShrink: 0,
+          marginTop: "4px",
+          fontFamily: "'DM Mono', monospace"
+        })}
+      >
+        {status}
+      </div>
+    </div>
+    <p
+      class={css({
+        fontSize: "13px",
+        color: "#555",
+        lineHeight: "1.7",
+        marginBottom: "22px",
+        m: 0
+      })}
+    >
+      {description}
+    </p>
+    <div
+      class={css({
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "8px"
+      })}
+    >
+      {pills.map((pill) => (
+        <span
+          class={css({
+            fontSize: "10px",
+            letterSpacing: "0.08em",
+            padding: "5px 12px",
+            border: "1px solid #ebebeb",
+            color: pill.dark ? "#fff" : "#999",
+            background: pill.dark ? "#0d0d0d" : "transparent",
+            fontFamily: "'DM Mono', monospace"
+          })}
+        >
+          {pill.text}
+        </span>
+      ))}
+    </div>
+  </div>
+</div>

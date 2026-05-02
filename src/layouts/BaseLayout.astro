@@ -38,6 +38,7 @@ const organizationSchema = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
     <meta name="description" content={description} />
     <meta name="keywords" content={site.keywords.join(", ")} />
     <meta name="robots" content="index, follow" />
@@ -59,43 +60,15 @@ const organizationSchema = {
     class={css({
       margin: 0,
       minH: "100vh",
-      fontFamily: "system-ui, sans-serif",
-      color: "ink",
+      fontFamily: "'DM Mono', monospace",
+      color: "#0d0d0d",
+      bg: "#fafafa",
       lineHeight: "1.6",
       position: "relative",
-      overflowX: "hidden"
+      overflowX: "hidden",
+      WebkitFontSmoothing: "antialiased"
     })}
   >
-    <div
-      class={css({
-        position: "fixed",
-        borderRadius: "999px",
-        filter: "blur(110px)",
-        opacity: 0.28,
-        pointerEvents: "none",
-        zIndex: 0,
-        top: "-5rem",
-        left: "-7rem",
-        w: "18rem",
-        h: "18rem",
-        bg: "primary"
-      })}
-    ></div>
-    <div
-      class={css({
-        position: "fixed",
-        borderRadius: "999px",
-        filter: "blur(110px)",
-        opacity: 0.28,
-        pointerEvents: "none",
-        zIndex: 0,
-        top: "30%",
-        right: "-6rem",
-        w: "20rem",
-        h: "20rem",
-        bg: "secondary"
-      })}
-    ></div>
     <slot />
   </body>
 </html>

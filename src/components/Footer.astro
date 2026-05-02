@@ -1,34 +1,36 @@
 ---
 import { css } from "../../styled-system/css";
-import { site } from "../data/site";
-
-interface Props {
-  showHomeLink?: boolean;
-}
-
-const { showHomeLink = false } = Astro.props;
 ---
 
 <footer
   class={css({
-    position: "relative",
-    zIndex: 1,
-    px: "5",
-    pb: "8",
-    textAlign: "center",
-    color: "muted"
+    borderTop: "1.5px solid #0d0d0d",
+    padding: "32px 24px",
+    maxW: "680px",
+    mx: "auto",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexWrap: "wrap",
+    gap: "16px"
   })}
 >
-  <p class={css({ m: 0, fontSize: "sm" })}>
-    Founded by <a href={site.links.founderProfile}>{site.author}</a>.
-    {showHomeLink ? (
-      <>
-        {" "}Learn more about <a href="/">Hivepen</a>.
-      </>
-    ) : (
-      <>
-        {" "}Follow updates from <a href={site.links.hiveProfile}>Hivepen on Hive</a>.
-      </>
-    )}
-  </p>
+  <div
+    class={css({
+      fontFamily: "'DM Serif Display', serif",
+      fontSize: "20px",
+      color: "#0d0d0d"
+    })}
+  >
+    Hivepen
+  </div>
+  <div
+    class={css({
+      fontSize: "10px",
+      color: "#999",
+      letterSpacing: "0.08em"
+    })}
+  >
+    Independent · 2026
+  </div>
 </footer>

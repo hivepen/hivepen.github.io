@@ -6,7 +6,7 @@
   }
 
   body {
-    background: linear-gradient(180deg, var(--colors-pageStart), var(--colors-pageEnd));
+    background: #fafafa;
   }
 
   a {
@@ -16,5 +16,12 @@
   img {
     display: block;
     max-width: 100%;
+  }
+}
+
+@layer utilities {
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 }
