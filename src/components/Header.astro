@@ -1,0 +1,66 @@
+---
+import { css } from "../../styled-system/css";
+
+interface Props {
+  eyebrow: string;
+  compact?: boolean;
+}
+
+const { eyebrow, compact = false } = Astro.props;
+---
+
+<header
+  class={css({
+    position: "relative",
+    zIndex: 1,
+    px: "5",
+    pt: compact ? "6" : { base: "6", md: "10" },
+    pb: compact ? "4" : "4"
+  })}
+>
+  <div
+    class={css({
+      maxW: "1100px",
+      mx: "auto",
+      display: "flex",
+      alignItems: { base: "flex-start", sm: "center" },
+      flexDirection: { base: "column", sm: "row" },
+      gap: "4"
+    })}
+  >
+    <img
+      alt="Hivepen logo"
+      src="/img/logo/hivepen-logo-nobg.svg"
+      width={compact ? "52" : "124"}
+      height={compact ? "52" : "120"}
+      class={css({
+        width: compact ? "4rem" : { base: "4.5rem", md: "5rem" }
+      })}
+    />
+    <div>
+      <p
+        class={css({
+          m: 0,
+          mb: "1.5",
+          textTransform: "uppercase",
+          letterSpacing: "0.12em",
+          fontSize: "xs",
+          fontWeight: "700",
+          color: "secondary"
+        })}
+      >
+        {eyebrow}
+      </p>
+      <h1
+        class={css({
+          m: 0,
+          lineHeight: "0.95",
+          fontSize: compact ? { base: "4xl", md: "5xl" } : { base: "5xl", md: "7xl" },
+          color: "primary"
+        })}
+      >
+        <span>Hive</span><span>pen</span>
+      </h1>
+    </div>
+  </div>
+</header>

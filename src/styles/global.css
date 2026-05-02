@@ -1,0 +1,20 @@
+@layer reset, base, tokens, recipes, utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: linear-gradient(180deg, var(--colors-pageStart), var(--colors-pageEnd));
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,52 @@
+---
+import { css } from "../../styled-system/css";
+
+interface Props {
+  status: string;
+  title: string;
+  description: string;
+}
+
+const { status, title, description } = Astro.props;
+---
+
+<article
+  class={css({
+    p: "5",
+    borderRadius: "card",
+    bg: "rgba(255, 255, 255, 0.78)",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "line"
+  })}
+>
+  <span
+    class={css({
+      display: "inline-flex",
+      mb: "3.5",
+      px: "2.5",
+      py: "1",
+      borderRadius: "full",
+      bg: "rgba(253, 154, 14, 0.14)",
+      color: "#a35900",
+      fontSize: "2xs",
+      fontWeight: "700",
+      textTransform: "uppercase",
+      letterSpacing: "0.08em"
+    })}
+  >
+    {status}
+  </span>
+  <h4
+    class={css({
+      m: 0,
+      mb: "3",
+      fontSize: "xl",
+      lineHeight: "1.2",
+      color: "ink"
+    })}
+  >
+    {title}
+  </h4>
+  <p class={css({ m: 0, color: "muted" })}>{description}</p>
+</article>

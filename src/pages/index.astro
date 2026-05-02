@@ -1,0 +1,215 @@
+---
+import { css } from "../../styled-system/css";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { projects } from "../data/projects";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <Header eyebrow="Development studio" />
+
+  <main
+    class={css({
+      position: "relative",
+      zIndex: 1,
+      maxW: "1100px",
+      mx: "auto",
+      px: "5",
+      pb: "16",
+      display: "grid",
+      gap: "6"
+    })}
+  >
+    <section
+      class={css({
+        bg: "panel",
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: "line",
+        borderRadius: "panel",
+        p: { base: "6", md: "8" },
+        boxShadow: "soft",
+        backdropFilter: "blur(12px)"
+      })}
+    >
+      <p
+        class={css({
+          m: 0,
+          mb: "3",
+          textTransform: "uppercase",
+          letterSpacing: "0.12em",
+          fontSize: "xs",
+          fontWeight: "700",
+          color: "secondary"
+        })}
+      >
+        Software for Hive, and bridges beyond it.
+      </p>
+      <h2
+        class={css({
+          m: 0,
+          mb: "4",
+          fontSize: { base: "4xl", md: "6xl" },
+          lineHeight: "1.05",
+          maxW: "15ch"
+        })}
+      >
+        Hivepen builds practical digital products, integrations, and tools that help people use blockchain without fear.
+      </h2>
+      <p class={css({ m: 0, maxW: "68ch", color: "muted", mb: "3" })}>
+        Hivepen started as a software idea, but it grew into a broader development studio for helping communities,
+        projects, initiatives, and individuals who want useful software connected to the Hive ecosystem and the wider
+        web.
+      </p>
+      <p class={css({ m: 0, maxW: "68ch", color: "muted" })}>
+        We believe a Hive account can be one of the easiest ways to enter crypto. Our work is focused on making that
+        first step feel simpler, safer, and genuinely valuable for everyday people.
+      </p>
+      <div
+        class={css({
+          display: "flex",
+          flexWrap: "wrap",
+          flexDir: { base: "column", sm: "row" },
+          gap: "3.5",
+          mt: "6"
+        })}
+      >
+        <a
+          href="https://hive.io/es/join"
+          target="_blank"
+          rel="noreferrer"
+          class={css({
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            minH: "3rem",
+            px: "5",
+            py: "3.5",
+            borderRadius: "full",
+            fontWeight: "700",
+            bg: "linear-gradient(135deg, var(--colors-primary), #ffba52)",
+            color: "#241000"
+          })}
+        >
+          Create a Hive account
+        </a>
+        <a
+          href="/p/"
+          class={css({
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            minH: "3rem",
+            px: "5",
+            py: "3.5",
+            borderRadius: "full",
+            fontWeight: "700",
+            borderWidth: "1px",
+            borderStyle: "solid",
+            borderColor: "line",
+            bg: "rgba(255, 255, 255, 0.7)",
+            color: "ink"
+          })}
+        >
+          Open the profile hub
+        </a>
+      </div>
+    </section>
+
+    <section
+      class={css({
+        display: "grid",
+        gap: "6",
+        gridTemplateColumns: { base: "1fr", md: "repeat(2, minmax(0, 1fr))" }
+      })}
+    >
+      <article
+        class={css({
+          bg: "panel",
+          borderWidth: "1px",
+          borderStyle: "solid",
+          borderColor: "line",
+          borderRadius: "panel",
+          p: "6",
+          boxShadow: "soft",
+          backdropFilter: "blur(12px)"
+        })}
+      >
+        <p class={css({ m: 0, mb: "1.5", textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "xs", fontWeight: "700", color: "secondary" })}>
+          What Hivepen does
+        </p>
+        <h3 class={css({ m: 0, mb: "4", fontSize: { base: "2xl", md: "3xl" }, lineHeight: "1.2" })}>
+          Development, product thinking, onboarding, and ecosystem support.
+        </h3>
+        <ul class={css({ m: 0, pl: "5", color: "muted", display: "grid", gap: "2.5" })}>
+          <li>Builds software integrated with Hive and ready for future cross-platform expansion.</li>
+          <li>Supports communities, founders, creators, and independent initiatives with tailored tools.</li>
+          <li>Designs smoother experiences around wallets, identity, publishing, and participation.</li>
+          <li>Explores ways to connect blockchain products with real-world use cases and familiar web flows.</li>
+        </ul>
+      </article>
+
+      <article
+        class={css({
+          bg: "panel",
+          borderWidth: "1px",
+          borderStyle: "solid",
+          borderColor: "line",
+          borderRadius: "panel",
+          p: "6",
+          boxShadow: "soft",
+          backdropFilter: "blur(12px)"
+        })}
+      >
+        <p class={css({ m: 0, mb: "1.5", textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "xs", fontWeight: "700", color: "secondary" })}>
+          Why this matters
+        </p>
+        <h3 class={css({ m: 0, mb: "4", fontSize: { base: "2xl", md: "3xl" }, lineHeight: "1.2" })}>
+          Crypto adoption improves when the experience feels human.
+        </h3>
+        <p class={css({ m: 0, mb: "3", color: "muted" })}>
+          Hivepen is not here to talk only to developers or only to Hive users. The mission is to make blockchain tools
+          easier to understand, easier to try, and easier to connect with people, platforms, and opportunities outside
+          of crypto-native spaces.
+        </p>
+        <p class={css({ m: 0, color: "muted" })}>
+          That includes helping more people discover that a wallet and blockchain account can feel accessible, useful,
+          and far less intimidating than expected.
+        </p>
+      </article>
+    </section>
+
+    <section
+      class={css({
+        bg: "panel",
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: "line",
+        borderRadius: "panel",
+        p: "6",
+        boxShadow: "soft",
+        backdropFilter: "blur(12px)"
+      })}
+    >
+      <p class={css({ m: 0, mb: "1.5", textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "xs", fontWeight: "700", color: "secondary" })}>
+        Right now
+      </p>
+      <h3 class={css({ m: 0, mb: "5", fontSize: { base: "2xl", md: "3xl" }, lineHeight: "1.2" })}>
+        Current areas in active exploration and development.
+      </h3>
+      <div
+        class={css({
+          display: "grid",
+          gap: "4",
+          gridTemplateColumns: { base: "1fr", md: "repeat(3, minmax(0, 1fr))" }
+        })}
+      >
+        {projects.map((project) => <ProjectCard {...project} />)}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

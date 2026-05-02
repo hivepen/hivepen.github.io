@@ -1,0 +1,34 @@
+---
+import { css } from "../../styled-system/css";
+import { site } from "../data/site";
+
+interface Props {
+  showHomeLink?: boolean;
+}
+
+const { showHomeLink = false } = Astro.props;
+---
+
+<footer
+  class={css({
+    position: "relative",
+    zIndex: 1,
+    px: "5",
+    pb: "8",
+    textAlign: "center",
+    color: "muted"
+  })}
+>
+  <p class={css({ m: 0, fontSize: "sm" })}>
+    Founded by <a href={site.links.founderProfile}>{site.author}</a>.
+    {showHomeLink ? (
+      <>
+        {" "}Learn more about <a href="/">Hivepen</a>.
+      </>
+    ) : (
+      <>
+        {" "}Follow updates from <a href={site.links.hiveProfile}>Hivepen on Hive</a>.
+      </>
+    )}
+  </p>
+</footer>

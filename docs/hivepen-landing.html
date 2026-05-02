@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hivepen — Apps built with intention</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #0d0d0d;
+  --mid: #555;
+  --muted: #999;
+  --faint: #ebebeb;
+  --bg: #fafafa;
+  --mono: 'DM Mono', monospace;
+  --serif: 'DM Serif Display', serif;
+
+  --genioo:  #e8a020;
+  --gloti:   #c0462b;
+  --studio:  #1a5c3a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--black);
+  font-family: var(--mono);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+.fade-1 { animation-delay: 0.1s; }
+.fade-2 { animation-delay: 0.25s; }
+.fade-3 { animation-delay: 0.4s; }
+.fade-4 { animation-delay: 0.55s; }
+.fade-5 { animation-delay: 0.7s; }
+.fade-6 { animation-delay: 0.85s; }
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--faint);
+  padding: 0 24px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--black);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--black); }
+
+/* ── HERO ── */
+.hero {
+  padding: 72px 24px 64px;
+  max-width: 680px;
+  margin: 0 auto;
+  border-bottom: 1.5px solid var(--black);
+}
+
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.hero-headline {
+  font-family: var(--serif);
+  font-size: clamp(48px, 11vw, 76px);
+  line-height: 0.95;
+  color: var(--black);
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+}
+
+.hero-headline em {
+  font-style: italic;
+  color: var(--mid);
+}
+
+.hero-sub {
+  font-size: 13px;
+  color: var(--mid);
+  line-height: 1.75;
+  max-width: 380px;
+  margin-bottom: 36px;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.hero-count {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero-count strong {
+  font-size: 22px;
+  font-family: var(--serif);
+  font-weight: normal;
+  color: var(--black);
+  display: block;
+  letter-spacing: -0.02em;
+  margin-bottom: 2px;
+}
+
+.hero-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--faint);
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 24px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-label-text {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.section-label-line {
+  flex: 1;
+  height: 1px;
+  background: var(--faint);
+}
+
+/* ── PROJECT CARDS ── */
+.projects {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.project-card {
+  border: 1.5px solid var(--black);
+  margin-bottom: -1.5px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: #fff;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  z-index: 2;
+}
+
+/* accent bar */
+.project-card::before {
+  content: '';
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: var(--accent-color);
+}
+
+.card-inner {
+  padding: 28px 28px 24px;
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.card-name-block {}
+
+.card-tag {
+  display: inline-block;
+  background: var(--accent-color);
+  color: #fff;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  margin-bottom: 10px;
+}
+
+.card-name {
+  font-family: var(--serif);
+  font-size: 38px;
+  color: var(--black);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+}
+
+.card-name em {
+  font-style: italic;
+  color: var(--mid);
+}
+
+.card-status {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--faint);
+  padding: 4px 9px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 4px;
+  font-family: var(--mono);
+}
+
+.card-desc {
+  font-size: 13px;
+  color: var(--mid);
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+.card-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 5px 12px;
+  border: 1px solid var(--faint);
+  color: var(--muted);
+  font-family: var(--mono);
+}
+
+.pill.dark {
+  background: var(--black);
+  border-color: var(--black);
+  color: #fff;
+}
+
+/* ── genioo ── */
+.genioo-card { --accent-color: var(--genioo); }
+
+/* ── gloti ── */
+.gloti-card  { --accent-color: var(--gloti); }
+
+/* ── studio ── */
+.studio-card { --accent-color: var(--studio); }
+
+/* ── MANIFESTO STRIP ── */
+.manifesto {
+  background: var(--black);
+  padding: 52px 24px;
+  text-align: center;
+}
+
+.manifesto-inner {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.manifesto-quote {
+  font-family: var(--serif);
+  font-size: clamp(22px, 5vw, 32px);
+  color: #fff;
+  line-height: 1.35;
+  margin-bottom: 24px;
+}
+
+.manifesto-quote em {
+  font-style: italic;
+  color: #888;
+}
+
+.manifesto-line {
+  width: 32px;
+  height: 1.5px;
+  background: #444;
+  margin: 0 auto 18px;
+}
+
+.manifesto-attr {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #555;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1.5px solid var(--black);
+  padding: 32px 24px;
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-logo {
+  font-family: var(--serif);
+  font-size: 20px;
+  color: var(--black);
+}
+
+.footer-meta {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 480px) {
+  nav { padding: 0 16px; }
+  .nav-links { gap: 16px; }
+  .hero { padding: 48px 16px 48px; }
+  .section-label { padding: 32px 16px 16px; }
+  .projects { padding: 0 16px 60px; }
+  .card-inner { padding: 22px 20px 20px; }
+  .card-name { font-size: 32px; }
+  footer { padding: 28px 16px; }
+  .manifesto { padding: 44px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Hivepen</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="https://hive.blog" target="_blank">Hive</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow fade fade-1">Independent apps · Built with intention</div>
+  <h1 class="hero-headline fade fade-2">
+    Tools<br>
+    worth<br>
+    <em>your time.</em>
+  </h1>
+  <p class="hero-sub fade fade-3">
+    We build apps that respect your attention. No ads, no dark patterns — just focused experiences designed to last.
+  </p>
+  <div class="hero-meta fade fade-4">
+    <div class="hero-count">
+      <strong>3</strong>
+      Projects
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-count">
+      <strong>0</strong>
+      Ads
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-count">
+      <strong>∞</strong>
+      Patience
+    </div>
+  </div>
+</section>
+
+<!-- SECTION LABEL -->
+<div class="section-label fade fade-4">
+  <span class="section-label-text">What we're building</span>
+  <div class="section-label-line"></div>
+</div>
+
+<!-- PROJECTS -->
+<div class="projects" id="projects">
+
+  <!-- GENIOO -->
+  <div class="project-card genioo-card fade fade-4">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="card-name-block">
+          <div class="card-tag">Games</div>
+          <div class="card-name">Genioo</div>
+        </div>
+        <div class="card-status">Mobile-first</div>
+      </div>
+      <p class="card-desc">
+        Brain-stimulating games that reward focus, logic, and curiosity. Classic formats and new challenges — in a space that never interrupts, pressures, or manipulates.
+      </p>
+      <div class="card-pills">
+        <span class="pill dark">No ads</span>
+        <span class="pill dark">No pressure</span>
+        <span class="pill">Brain games</span>
+        <span class="pill">Fair design</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GLOTI -->
+  <div class="project-card gloti-card fade fade-5">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="card-name-block">
+          <div class="card-tag">Languages</div>
+          <div class="card-name">Gloti</div>
+        </div>
+        <div class="card-status">In development</div>
+      </div>
+      <p class="card-desc">
+        Learn languages the way your brain actually works — through stories. Discover vocabulary in real context, not isolated flashcards. Read, interpret, absorb.
+      </p>
+      <div class="card-pills">
+        <span class="pill dark">Story-driven</span>
+        <span class="pill dark">Real context</span>
+        <span class="pill">Reading</span>
+        <span class="pill">Vocabulary</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HIVEPEN STUDIO -->
+  <div class="project-card studio-card fade fade-6">
+    <div class="card-inner">
+      <div class="card-top">
+        <div class="card-name-block">
+          <div class="card-tag">Hive · Pro tools</div>
+          <div class="card-name">Hivepen<br><em>Studio</em></div>
+        </div>
+        <div class="card-status">Coming soon</div>
+      </div>
+      <p class="card-desc">
+        An advanced workspace for creators, communities, and curators on Hive. Powerful tools for the people who take the ecosystem seriously.
+      </p>
+      <div class="card-pills">
+        <span class="pill dark">Hive blockchain</span>
+        <span class="pill dark">Curation</span>
+        <span class="pill">Communities</span>
+        <span class="pill">Pro users</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- MANIFESTO -->
+<div class="manifesto">
+  <div class="manifesto-inner">
+    <div class="manifesto-quote fade fade-1">
+      "We believe the best products<br>earn your return — <em>not demand it.</em>"
+    </div>
+    <div class="manifesto-line"></div>
+    <div class="manifesto-attr">Hivepen · hivepen.com</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Hivepen</div>
+  <div class="footer-meta">Independent · 2026</div>
+</footer>
+
+</body>
+</html>

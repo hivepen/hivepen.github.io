@@ -1,0 +1,57 @@
+---
+import { css } from "../../styled-system/css";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="404 | Hivepen" description="The page you are looking for could not be found.">
+  <Header eyebrow="Not found" compact />
+  <main
+    class={css({
+      position: "relative",
+      zIndex: 1,
+      maxW: "760px",
+      mx: "auto",
+      px: "5",
+      pb: "16"
+    })}
+  >
+    <section
+      class={css({
+        bg: "panel",
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: "line",
+        borderRadius: "panel",
+        p: { base: "6", md: "8" },
+        boxShadow: "soft",
+        backdropFilter: "blur(12px)",
+        textAlign: "center"
+      })}
+    >
+      <h2 class={css({ m: 0, mb: "4", fontSize: { base: "4xl", md: "5xl" }, lineHeight: "1.05" })}>Page not found</h2>
+      <p class={css({ m: 0, color: "muted", mb: "6" })}>
+        The page you tried to open does not exist anymore, or the link is incomplete.
+      </p>
+      <a
+        href="/"
+        class={css({
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          minH: "3rem",
+          px: "5",
+          py: "3.5",
+          borderRadius: "full",
+          fontWeight: "700",
+          bg: "linear-gradient(135deg, var(--colors-primary), #ffba52)",
+          color: "#241000"
+        })}
+      >
+        Return home
+      </a>
+    </section>
+  </main>
+  <Footer showHomeLink />
+</BaseLayout>
