@@ -1,0 +1,323 @@
+---
+import { css } from "../../styled-system/css";
+---
+
+<section
+  id="support"
+  class={css({
+    borderTop: "1.5px solid #0d0d0d",
+    background: "#f7f4ef"
+  })}
+>
+  <!-- Section label -->
+  <div class={css({
+    maxW: "680px", mx: "auto",
+    padding: "44px 28px 22px",
+    display: "flex", alignItems: "center", gap: "18px"
+  })}>
+    <span class={css({
+      fontSize: "10px", letterSpacing: "0.22em",
+      textTransform: "uppercase", color: "#999", whiteSpace: "nowrap"
+    })}>
+      <span data-i18n="section.support">Support the work</span>
+    </span>
+    <div class={css({ flex: 1, height: "1px", background: "#e4e0da" })} />
+  </div>
+
+  <div class={css({ maxW: "680px", mx: "auto", padding: "0 28px 80px" })}>
+    <!-- Intro -->
+    <div class={css({ marginBottom: "36px" })}>
+      <h2 class={css({
+        fontFamily: "'DM Serif Display', serif",
+        fontSize: "clamp(28px, 6vw, 40px)",
+        color: "#0d0d0d", lineHeight: "1.05",
+        letterSpacing: "-0.02em", marginBottom: "16px"
+      })}>
+        <span data-i18n="support.headline">Help us keep<br/><em style="font-style:italic;color:#555">building.</em></span>
+      </h2>
+      <p class={css({ fontSize: "13px", color: "#555", lineHeight: "1.8", maxW: "420px" })}>
+        <span data-i18n="support.sub">Your support funds development, covers infrastructure, and powers curation on Hive. Delegating HP lets us generate curation rewards that go directly back into the ecosystem and new apps.</span>
+      </p>
+    </div>
+
+    <!-- Widget card -->
+    <div class={css({
+      border: "1.5px solid #0d0d0d",
+      background: "#fff",
+      overflow: "hidden"
+    })}>
+
+      <!-- Username row -->
+      <div class={css({
+        padding: "24px 28px 0",
+        borderBottom: "1px solid #e4e0da",
+        paddingBottom: "24px"
+      })}>
+        <label class={css({
+          display: "block", fontSize: "10px",
+          letterSpacing: "0.18em", textTransform: "uppercase",
+          color: "#999", marginBottom: "10px",
+          fontFamily: "'DM Mono', monospace"
+        })}>
+          <span data-i18n="support.username">Your Hive username</span>
+        </label>
+        <div class={css({ display: "flex", gap: "0", alignItems: "stretch" })}>
+          <span class={css({
+            background: "#f7f4ef", border: "1.5px solid #0d0d0d",
+            borderRight: "none", padding: "0 14px",
+            display: "flex", alignItems: "center",
+            fontSize: "14px", color: "#999", fontFamily: "'DM Mono', monospace",
+            flexShrink: 0
+          })}>@</span>
+          <input
+            id="hive-username"
+            type="text"
+            placeholder="username"
+            class={css({
+              flex: 1, border: "1.5px solid #0d0d0d",
+              padding: "12px 16px", fontSize: "14px",
+              color: "#0d0d0d", background: "#fff",
+              fontFamily: "'DM Mono', monospace",
+              outline: "none",
+              "&:focus": { borderColor: "#0d0d0d" },
+              "&::placeholder": { color: "#bbb" }
+            })}
+          />
+        </div>
+      </div>
+
+      <!-- Two action columns -->
+      <div class={css({ display: "grid", gridTemplateColumns: "1fr 1fr" })}>
+
+        <!-- SEND HIVE -->
+        <div class={css({
+          padding: "24px 28px",
+          borderRight: "1px solid #e4e0da"
+        })}>
+          <div class={css({
+            display: "flex", alignItems: "center", gap: "8px",
+            marginBottom: "6px"
+          })}>
+            <!-- Lucide Send icon -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9l20-7z"/>
+            </svg>
+            <span class={css({
+              fontSize: "10px", letterSpacing: "0.18em",
+              textTransform: "uppercase", color: "#0d0d0d",
+              fontFamily: "'DM Mono', monospace"
+            })}><span data-i18n="support.sendHive">Send HIVE</span></span>
+          </div>
+
+          <p class={css({ fontSize: "11px", color: "#999", lineHeight: "1.6", marginBottom: "18px" })}>
+            <span data-i18n="support.sendHiveSub">A direct contribution to @hivepen.</span>
+          </p>
+
+          <div class={css({ display: "flex", gap: "0", marginBottom: "12px" })}>
+            <input
+              id="hive-amount"
+              type="number"
+              min="0.001"
+              step="0.001"
+              placeholder="10.000"
+              class={css({
+                flex: 1, border: "1.5px solid #0d0d0d",
+                borderRight: "none", padding: "10px 14px",
+                fontSize: "13px", color: "#0d0d0d",
+                background: "#fff", fontFamily: "'DM Mono', monospace",
+                outline: "none",
+                "&::placeholder": { color: "#bbb" }
+              })}
+            />
+            <span class={css({
+              background: "#0d0d0d", color: "#fff",
+              padding: "0 14px", display: "flex",
+              alignItems: "center", fontSize: "10px",
+              letterSpacing: "0.1em", fontFamily: "'DM Mono', monospace",
+              flexShrink: 0
+            })}>HIVE</span>
+          </div>
+
+          <button
+            id="btn-send-hive"
+            class={css({
+              width: "100%", background: "#0d0d0d", color: "#fff",
+              border: "1.5px solid #0d0d0d", padding: "11px 0",
+              fontSize: "11px", letterSpacing: "0.14em",
+              textTransform: "uppercase", cursor: "pointer",
+              fontFamily: "'DM Mono', monospace",
+              transition: "background 0.2s, color 0.2s",
+              "&:hover": { background: "#fff", color: "#0d0d0d" }
+            })}
+          >
+            <span data-i18n="support.sendBtn">Send</span>
+          </button>
+        </div>
+
+        <!-- DELEGATE HP -->
+        <div class={css({ padding: "24px 28px" })}>
+          <div class={css({
+            display: "flex", alignItems: "center", gap: "8px",
+            marginBottom: "6px"
+          })}>
+            <!-- Lucide Zap icon -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e5c3a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+            <span class={css({
+              fontSize: "10px", letterSpacing: "0.18em",
+              textTransform: "uppercase", color: "#1e5c3a",
+              fontFamily: "'DM Mono', monospace"
+            })}><span data-i18n="support.delegate">Delegate HP</span></span>
+          </div>
+
+          <p class={css({ fontSize: "11px", color: "#999", lineHeight: "1.6", marginBottom: "18px" })}>
+            <span data-i18n="support.delegateSub">Lend voting power. Generates curation rewards for the ecosystem.</span>
+          </p>
+
+          <div class={css({ display: "flex", gap: "0", marginBottom: "12px" })}>
+            <input
+              id="hp-amount"
+              type="number"
+              min="1"
+              step="1"
+              placeholder="50"
+              class={css({
+                flex: 1, border: "1.5px solid #0d0d0d",
+                borderRight: "none", padding: "10px 14px",
+                fontSize: "13px", color: "#0d0d0d",
+                background: "#fff", fontFamily: "'DM Mono', monospace",
+                outline: "none",
+                "&::placeholder": { color: "#bbb" }
+              })}
+            />
+            <span class={css({
+              background: "#1e5c3a", color: "#fff",
+              padding: "0 14px", display: "flex",
+              alignItems: "center", fontSize: "10px",
+              letterSpacing: "0.1em", fontFamily: "'DM Mono', monospace",
+              flexShrink: 0
+            })}>HP</span>
+          </div>
+
+          <button
+            id="btn-delegate"
+            class={css({
+              width: "100%", background: "#1e5c3a", color: "#fff",
+              border: "1.5px solid #1e5c3a", padding: "11px 0",
+              fontSize: "11px", letterSpacing: "0.14em",
+              textTransform: "uppercase", cursor: "pointer",
+              fontFamily: "'DM Mono', monospace",
+              transition: "background 0.2s, color 0.2s",
+              "&:hover": { background: "#fff", color: "#1e5c3a" }
+            })}
+          >
+            <span data-i18n="support.delegateBtn">Delegate</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Status / feedback message -->
+      <div
+        id="keychain-status"
+        class={css({
+          padding: "14px 28px",
+          fontSize: "11px",
+          fontFamily: "'DM Mono', monospace",
+          color: "#999",
+          borderTop: "1px solid #e4e0da",
+          minHeight: "44px",
+          display: "flex",
+          alignItems: "center",
+          gap: "8px"
+        })}
+        style="display:none;"
+      >
+        <!-- icon injected by JS -->
+        <span id="keychain-status-text"></span>
+      </div>
+    </div>
+
+    <!-- No Keychain notice -->
+    <p class={css({
+      marginTop: "14px", fontSize: "11px",
+      color: "#bbb", fontFamily: "'DM Mono', monospace", lineHeight: "1.6"
+    })}>
+      <span data-i18n="support.keychainNote">Requires </span><a
+        href="https://hive-keychain.com"
+        target="_blank"
+        style="color:#999;text-decoration:underline;text-underline-offset:3px;"
+      >HiveKeychain</a><span data-i18n="support.keychainNote2"> browser extension.</span>
+    </p>
+  </div>
+</section>
+
+<script>
+  const RECIPIENT = 'hivepen';
+
+  function getUsername(): string {
+    return (document.getElementById('hive-username') as HTMLInputElement)?.value?.trim() ?? '';
+  }
+
+  function showStatus(msg: string, ok: boolean) {
+    const el = document.getElementById('keychain-status') as HTMLElement;
+    const txt = document.getElementById('keychain-status-text') as HTMLElement;
+    if (!el || !txt) return;
+    el.style.display = 'flex';
+    el.style.color = ok ? '#1e5c3a' : '#b03e27';
+    txt.textContent = msg;
+  }
+
+  function checkKeychain(): boolean {
+    if (!(window as any).hive_keychain) {
+      showStatus('HiveKeychain extension not found. Please install it first.', false);
+      return false;
+    }
+    return true;
+  }
+
+  document.getElementById('btn-send-hive')?.addEventListener('click', () => {
+    if (!checkKeychain()) return;
+    const username = getUsername();
+    if (!username) { showStatus('Please enter your Hive username first.', false); return; }
+    const amount = parseFloat((document.getElementById('hive-amount') as HTMLInputElement)?.value);
+    if (!amount || amount <= 0) { showStatus('Enter a valid HIVE amount.', false); return; }
+    const amountStr = amount.toFixed(3) + ' HIVE';
+    (window as any).hive_keychain.requestTransfer(
+      username,
+      RECIPIENT,
+      amount.toFixed(3),
+      'Hivepen donation — thank you!',
+      'HIVE',
+      (res: any) => {
+        if (res.success) {
+          showStatus(`✓ Sent ${amountStr} to @${RECIPIENT}. Thank you!`, true);
+        } else {
+          showStatus(res.message || 'Transaction cancelled.', false);
+        }
+      }
+    );
+  });
+
+  document.getElementById('btn-delegate')?.addEventListener('click', () => {
+    if (!checkKeychain()) return;
+    const username = getUsername();
+    if (!username) { showStatus('Please enter your Hive username first.', false); return; }
+    const hp = parseFloat((document.getElementById('hp-amount') as HTMLInputElement)?.value);
+    if (!hp || hp <= 0) { showStatus('Enter a valid HP amount.', false); return; }
+    // requestDelegation accepts HP amount directly (as string) with unit 'HP'
+    (window as any).hive_keychain.requestDelegation(
+      username,
+      RECIPIENT,
+      hp.toFixed(3),
+      'HP',
+      (res: any) => {
+        if (res.success) {
+          showStatus(`✓ Delegated ${hp.toFixed(0)} HP to @${RECIPIENT}. Thank you!`, true);
+        } else {
+          showStatus(res.message || 'Delegation cancelled.', false);
+        }
+      }
+    );
+  });
+</script>
