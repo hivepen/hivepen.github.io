@@ -1,0 +1,153 @@
+---
+import { css } from "../../../styled-system/css";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { absoluteUrl } from "../../data/site";
+---
+
+<BaseLayout
+  title="Hivepen Profile Hub | Quick Hive Profile Links"
+  description="Open a Hive account profile across popular frontends with Hivepen's quick profile hub."
+  canonical={absoluteUrl("/p/")}
+>
+  <Header eyebrow="Profile hub" compact />
+
+  <main
+    class={css({
+      position: "relative",
+      zIndex: 1,
+      maxW: "1100px",
+      mx: "auto",
+      px: "5",
+      pb: "16"
+    })}
+  >
+    <section
+      class={css({
+        maxW: "760px",
+        mx: "auto",
+        bg: "panel",
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: "line",
+        borderRadius: "panel",
+        p: { base: "6", md: "8" },
+        boxShadow: "soft",
+        backdropFilter: "blur(12px)"
+      })}
+    >
+      <p class={css({ m: 0, mb: "1.5", textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "xs", fontWeight: "700", color: "secondary" })}>
+        Quick access
+      </p>
+      <h2 class={css({ m: 0, mb: "4", fontSize: { base: "4xl", md: "5xl" }, lineHeight: "1.05" })}>
+        Hive profile
+      </h2>
+      <p id="profile-summary" class={css({ m: 0, color: "muted" })}>
+        Get the carlosepc account links to popular Hive frontends
+      </p>
+
+      <div
+        class={css({
+          display: "flex",
+          gap: "4",
+          flexDirection: "column",
+          alignItems: "center",
+          mt: "6"
+        })}
+      >
+        <img
+          id="profile-avatar"
+          class={css({ width: "8rem", aspectRatio: "1", borderRadius: "full" })}
+          src="https://images.hive.blog/u/carlosepc/avatar"
+          alt="Avatar for carlosepc"
+        />
+
+        <div
+          class={css({
+            bg: "rgba(0, 0, 0, 0.05)",
+            px: "3",
+            py: "2",
+            display: "flex",
+            alignItems: "center",
+            gap: "1",
+            width: "180px",
+            borderRadius: "full",
+            _focusWithin: {
+              outline: "2px solid var(--colors-primary)"
+            }
+          })}
+        >
+          <b class={css({ fontWeight: "900", color: "primary" })}>@</b>
+          <input
+            id="username-input"
+            class={css({
+              border: "none",
+              width: "100%",
+              fontSize: "md",
+              fontWeight: "700",
+              bg: "transparent",
+              color: "ink",
+              outline: "none"
+            })}
+            placeholder="your username"
+            value="carlosepc"
+          />
+        </div>
+
+        <div
+          class={css({
+            display: "flex",
+            gap: "4",
+            justifyContent: "center",
+            alignItems: "center",
+            flexWrap: "wrap",
+            mt: "2"
+          })}
+        >
+          <a id="ecency-link" target="_blank" rel="noreferrer" href="https://ecency.com/@carlosepc">Ecency</a>
+          <a id="inleo-link" target="_blank" rel="noreferrer" href="https://inleo.io/profile/carlosepc">InLeo</a>
+          <a id="hive-link" target="_blank" rel="noreferrer" href="https://hive.blog/@carlosepc">Hive.blog</a>
+          <a id="peakd-link" target="_blank" rel="noreferrer" href="https://peakd.com/@carlosepc">PeakD</a>
+        </div>
+
+        <a id="share-link" href="https://hivepen.com/p/?u=carlosepc">Share this profile hub</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer showHomeLink />
+
+  <script is:inline>
+    const defaultUsername = "carlosepc";
+    const input = document.getElementById("username-input");
+    const avatar = document.getElementById("profile-avatar");
+    const summary = document.getElementById("profile-summary");
+    const shareLink = document.getElementById("share-link");
+    const links = {
+      ecency: document.getElementById("ecency-link"),
+      inleo: document.getElementById("inleo-link"),
+      hive: document.getElementById("hive-link"),
+      peakd: document.getElementById("peakd-link")
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const initialUsername = params.get("u") || defaultUsername;
+    input.value = initialUsername;
+
+    const updateProfile = (rawValue) => {
+      const username = rawValue.trim() || defaultUsername;
+      avatar.src = `https://images.hive.blog/u/${username}/avatar`;
+      avatar.alt = `Avatar for ${username}`;
+      summary.textContent = `Get the ${username} account links to popular Hive frontends`;
+      links.ecency.href = `https://ecency.com/@${username}`;
+      links.inleo.href = `https://inleo.io/profile/${username}`;
+      links.hive.href = `https://hive.blog/@${username}`;
+      links.peakd.href = `https://peakd.com/@${username}`;
+      shareLink.href = `https://hivepen.com/p/?u=${encodeURIComponent(username)}`;
+    };
+
+    updateProfile(initialUsername);
+    input.addEventListener("input", (event) => updateProfile(event.currentTarget.value));
+  </script>
+</BaseLayout>

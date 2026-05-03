@@ -1,0 +1,106 @@
+---
+import { css } from "../../styled-system/css";
+
+interface Props {
+  id: string;
+  tag: string;
+  title: string;
+  status: string;
+  description: string;
+  pills: Array<{ text: string; dark: boolean }>;
+  accentColor: string;
+}
+
+const { id, tag, title, status, description, pills, accentColor } = Astro.props;
+
+const getAnimationDelay = () => {
+  switch (id) {
+    case 'genioo': return '0.4s';
+    case 'gloti':  return '0.55s';
+    case 'studio': return '0.7s';
+    default:       return '0.4s';
+  }
+};
+
+const titleHtml = title
+  .replace(/\n/g, '<br/>')
+  .replace('Studio', '<em style="font-style:italic;color:#555">Studio</em>');
+---
+
+<!--
+  BORDER FIX: Card has 1.5px solid black border on ALL sides.
+  The accent color stripe is a separate inner <div> (4px tall) at the top —
+  not a border override. Both coexist independently.
+-->
+<div
+  style={`animation-delay: ${getAnimationDelay()}`}
+  class={css({
+    border: "1.5px solid #0d0d0d",
+    marginBottom: "-1.5px",
+    overflow: "hidden",
+    position: "relative",
+    background: "#fff",
+    opacity: 0,
+    animation: "fadeUp 0.7s ease forwards",
+    transition: "transform 0.25s ease, box-shadow 0.25s ease",
+    "&:hover": {
+      transform: "translateY(-4px)",
+      boxShadow: "0 16px 48px rgba(13,13,13,0.12)",
+      zIndex: 2
+    }
+  })}
+>
+  <!-- Accent stripe: INSIDE the card, AFTER the border, independent of it -->
+  <div style={`height:4px;background:${accentColor};width:100%;flex-shrink:0;`} />
+
+  <div class={css({ padding: "28px 28px 26px" })}>
+    <div class={css({
+      display: "flex", alignItems: "flex-start",
+      justifyContent: "space-between", gap: "16px", marginBottom: "18px"
+    })}>
+      <div>
+        <div
+          style={`background:${accentColor};`}
+          class={css({
+            display: "inline-block", color: "#fff",
+            fontSize: "9px", letterSpacing: "0.18em",
+            textTransform: "uppercase", padding: "3px 9px",
+            marginBottom: "11px", fontFamily: "'DM Mono', monospace"
+          })}
+        >{tag}</div>
+
+        <div
+          class={css({
+            fontFamily: "'DM Serif Display', serif",
+            fontSize: "40px", color: "#0d0d0d",
+            lineHeight: "1.0", letterSpacing: "-0.025em"
+          })}
+          set:html={titleHtml}
+        />
+      </div>
+
+      <div class={css({
+        fontSize: "9px", letterSpacing: "0.14em", textTransform: "uppercase",
+        color: "#999", border: "1px solid #e4e0da", padding: "4px 9px",
+        whiteSpace: "nowrap", flexShrink: 0, marginTop: "6px",
+        fontFamily: "'DM Mono', monospace"
+      })}>{status}</div>
+    </div>
+
+    <p class={css({ fontSize: "13px", color: "#555", lineHeight: "1.75", marginBottom: "22px" })}>
+      {description}
+    </p>
+
+    <div class={css({ display: "flex", flexWrap: "wrap", gap: "8px" })}>
+      {pills.map((pill) => (
+        <span class={css({
+          fontSize: "10px", letterSpacing: "0.08em", padding: "5px 12px",
+          fontFamily: "'DM Mono', monospace",
+          border: pill.dark ? "1px solid #0d0d0d" : "1px solid #e4e0da",
+          color: pill.dark ? "#fff" : "#999",
+          background: pill.dark ? "#0d0d0d" : "transparent"
+        })}>{pill.text}</span>
+      ))}
+    </div>
+  </div>
+</div>

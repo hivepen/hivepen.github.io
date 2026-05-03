@@ -1,0 +1,143 @@
+---
+import { css } from "../../styled-system/css";
+---
+
+<footer class={css({
+  borderTop: "1.5px solid #0d0d0d",
+  background: "#f7f4ef"
+})}>
+  <div class={css({
+    maxW: "680px", mx: "auto",
+    padding: "40px 28px 36px",
+    display: "grid",
+    gridTemplateColumns: "1fr auto",
+    gap: "32px",
+    alignItems: "start"
+  })}>
+
+    <!-- Left: brand -->
+    <div>
+      <div class={css({
+        fontFamily: "'DM Serif Display', serif",
+        fontSize: "22px", color: "#0d0d0d",
+        letterSpacing: "-0.01em", marginBottom: "8px"
+      })}>Hivepen</div>
+      <p class={css({
+        fontSize: "11px", color: "#aaa",
+        fontFamily: "'DM Mono', monospace",
+        lineHeight: "1.6", maxW: "240px"
+      })}>
+        Apps built with intention.<br/>No ads. No dark patterns.
+      </p>
+    </div>
+
+    <!-- Right: links -->
+    <div class={css({
+      display: "flex", flexDirection: "column", gap: "12px", alignItems: "flex-end"
+    })}>
+
+      <!-- @hivepen on Hive -->
+      <a
+        href="https://hive.blog/@hivepen"
+        target="_blank"
+        rel="noopener noreferrer"
+        class={css({
+          display: "flex", alignItems: "center", gap: "8px",
+          fontSize: "11px", letterSpacing: "0.06em",
+          color: "#666", textDecoration: "none", fontFamily: "'DM Mono', monospace",
+          transition: "color 0.2s",
+          "&:hover": { color: "#0d0d0d" }
+        })}
+      >
+        <!-- Lucide Hexagon (Hive symbol approximation) -->
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+        </svg>
+        @hivepen
+      </a>
+
+      <!-- @carlosepc on Hive -->
+      <a
+        href="https://hive.blog/@carlosepc"
+        target="_blank"
+        rel="noopener noreferrer"
+        class={css({
+          display: "flex", alignItems: "center", gap: "8px",
+          fontSize: "11px", letterSpacing: "0.06em",
+          color: "#666", textDecoration: "none", fontFamily: "'DM Mono', monospace",
+          transition: "color 0.2s",
+          "&:hover": { color: "#0d0d0d" }
+        })}
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+        </svg>
+        @carlosepc
+      </a>
+
+      <!-- LinkedIn -->
+      <a
+        href="https://linkedin.com/in/carlosepcc"
+        target="_blank"
+        rel="noopener noreferrer"
+        class={css({
+          display: "flex", alignItems: "center", gap: "8px",
+          fontSize: "11px", letterSpacing: "0.06em",
+          color: "#666", textDecoration: "none", fontFamily: "'DM Mono', monospace",
+          transition: "color 0.2s",
+          "&:hover": { color: "#0d0d0d" }
+        })}
+      >
+        <!-- Lucide Linkedin icon -->
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>
+        </svg>
+        carlosepcc
+      </a>
+
+      <!-- Email -->
+      <a
+        href="mailto:carlosepc.com@gmail.com"
+        class={css({
+          display: "flex", alignItems: "center", gap: "8px",
+          fontSize: "11px", letterSpacing: "0.06em",
+          color: "#666", textDecoration: "none", fontFamily: "'DM Mono', monospace",
+          transition: "color 0.2s",
+          "&:hover": { color: "#0d0d0d" }
+        })}
+      >
+        <!-- Lucide Mail icon -->
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="20" height="16" x="2" y="4" rx="2"/>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+        carlosepc.com@gmail.com
+      </a>
+    </div>
+  </div>
+
+  <!-- Bottom strip -->
+  <div class={css({
+    maxW: "680px", mx: "auto",
+    padding: "0 28px 28px",
+    display: "flex", justifyContent: "space-between",
+    alignItems: "center"
+  })}>
+    <span class={css({
+      fontSize: "10px", color: "#ccc",
+      fontFamily: "'DM Mono', monospace", letterSpacing: "0.08em"
+    })}>© 2026 Hivepen</span>
+    <a
+      href="https://hive.blog"
+      target="_blank"
+      class={css({
+        fontSize: "10px", color: "#ccc",
+        fontFamily: "'DM Mono', monospace",
+        letterSpacing: "0.08em", textDecoration: "none",
+        transition: "color 0.2s",
+        "&:hover": { color: "#0d0d0d" }
+      })}
+    >Built on Hive →</a>
+  </div>
+</footer>
